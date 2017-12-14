@@ -1,0 +1,29 @@
+{
+    "name": "waavi/api-connector",
+    "description": "An interface for Laravel 5 to consume and cache API's data",
+    "type": "package",
+    "keywords": [
+        "waavi",
+        "laravel",
+        "api",
+        "cache"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sergio Uve",
+            "email": "sergiouve@gmail.com"
+        }
+    ],
+    "minimum-stability": "master",
+    "require": {
+        "illuminate/database": "^5.5",
+        "guzzlehttp/guzzle": "^6.3",
+        "illuminate/support": "5.1.x|5.2.x|5.3.*|5.4.*|5.5.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Waavi\\ApiConnector\\": "src/"
+        }
+    }
+}
