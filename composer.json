@@ -15,7 +15,7 @@
             "email": "sergiouve@gmail.com"
         }
     ],
-    "minimum-stability": "master",
+    "minimum-stability": "stable",
     "require": {
         "illuminate/database": "^5.5",
         "guzzlehttp/guzzle": "^6.3",
