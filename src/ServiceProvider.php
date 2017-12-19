@@ -10,6 +10,8 @@ class ServiceProvider extends LaravelProvider
 {
     public function boot()
     {
+        $this->mergeConfigFrom(__DIR__ . '/../../config/apiconnector.php', 'apiconnector');
+
         $client = new Client([
             'base_uri' => env('CONNECTOR_BASE_URI') . '/', // TODO: move this to config with fallback to env
             'timeout'  => 8.0,
