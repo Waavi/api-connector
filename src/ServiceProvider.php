@@ -11,11 +11,11 @@ class ServiceProvider extends LaravelProvider
     public function boot()
     {
         $client = new Client([
-            'base_uri' => env('BASE_URI') . '/api/' . env('API_VERSION') . '/', // TODO: move this to config with fallback to env
+            'base_uri' => env('CONNECTOR_BASE_URI') . '/', // TODO: move this to config with fallback to env
             'timeout'  => 8.0,
             'headers' => [
                 'Accept' => 'application/json',
-                'Authorization' => 'Bearer ' . env('ACCESS_TOKEN'), // TODO: move this to config with fallback to env
+                'Authorization' => 'Bearer ' . env('CONNECTOR_ACCESS_TOKEN'), // TODO: move this to config with fallback to env
             ],
         ]);
 

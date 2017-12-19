@@ -16,7 +16,8 @@ class ApiRepository implements RemoteRepositoryContract
 
     public function get($key, $parameters = [])
     {
-        $response = $this->client->request('GET', $key, ['query' => $parameters]);
+        $parametersList = implode('&', (array) $parameters);
+        $response = $this->client->request('GET', $key, ['query' => $parametersList]);
         $data = json_decode($response->getBody()->getContents())->data;
 
         if (is_null($data)) {
