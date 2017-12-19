@@ -10,7 +10,7 @@ class ServiceProvider extends LaravelProvider
 {
     public function boot()
     {
-        $this->mergeConfigFrom(__DIR__ . '/../../config/apiconnector.php', 'apiconnector');
+        $this->mergeConfigFrom(__DIR__ . '/../config/apiconnector.php', 'apiconnector');
 
         $client = new Client([
             'base_uri' => env('CONNECTOR_BASE_URI') . '/', // TODO: move this to config with fallback to env
@@ -21,8 +21,8 @@ class ServiceProvider extends LaravelProvider
             ],
         ]);
 
-        $this->app->bind(ApiConnector::class, function() use ($client) {
-            return new ApiConnector($client);
+        $this->app->bind(ApiConnector::class, function($app) use ($client) {
+            return new ApiConnector($client, $app);
         });
     }
 
