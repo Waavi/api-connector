@@ -6,7 +6,7 @@ use GuzzleHttp\Client;
 use Waavi\ApiConnector\ApiConnector;
 use Illuminate\Support\ServiceProvider as LaravelProvider;
 
-class ServiceProvider extends LaravelProvider
+class ApiConnectorServiceProvider extends LaravelProvider
 {
     public function boot()
     {

@@ -9,14 +9,14 @@ WAAVI is a web development studio based in Madrid, Spain. You can learn more abo
 Require through Composer
 
 ```bash
-composer require waavi/api-connector 1.x
+composer require waavi/api-connector dev-master
 ```
 
 Or manually edit your composer.json file
 
 ```json
 "require": {
-    "waavi/api-connector": "1.x"
+    "waavi/api-connector": "dev-master"
 }
 ```
 
@@ -25,15 +25,7 @@ Or manually edit your composer.json file
 Once installed, edit your config/app.php add the following entry to the providers array:
 
 ```
-Waavi\ApiConnector\ServiceProvider::class
-```
-
-And add the following entries to your .env file:
-
-```
-BASE_URI=https://someapi.com
-API_VERSION=v1
-ACCESS_TOKEN=sometoken
+Waavi\ApiConnector\ApiConnectorServiceProvider::class
 ```
 
 ### Usage
