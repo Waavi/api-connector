@@ -10,20 +10,23 @@ class ServiceProvider extends LaravelProvider
 {
     public function boot()
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/apiconnector.php', 'apiconnector');
-
-        $client = new Client([
-            'base_uri' => env('CONNECTOR_BASE_URI') . '/', // TODO: move this to config with fallback to env
-            'timeout'  => 8.0,
-            'headers' => [
-                'Accept' => 'application/json',
-                'Authorization' => 'Bearer ' . env('CONNECTOR_ACCESS_TOKEN'), // TODO: move this to config with fallback to env
-            ],
+        $this->publishes([
+            __DIR__ . '/../config/translator.php' => config_path('translator.php'),
         ]);
 
-        $this->app->bind(ApiConnector::class, function($app) use ($client) {
+        $this->app->bind(ApiConnector::class, function($app) {
+            $client = new Client([
+                'base_uri' => $app['config']->get('apiconnector.base_url'),
+                'timeout'  => $app['config']->get('apiconnector.timeout'),
+                'headers' => $app['config']->get('apiconnector.headers'),
+            ]);
             return new ApiConnector($client, $app);
         });
+    }
+
+    public function register()
+    {
+        $this->mergeConfigFrom(__DIR__ . '/../config/apiconnector.php', 'apiconnector');
     }
 
 }

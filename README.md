@@ -25,7 +25,7 @@ Or manually edit your composer.json file
 Once installed, edit your config/app.php add the following entry to the providers array:
 
 ```
-Waavi\TNLConnector\ServiceProvider::class
+Waavi\ApiConnector\ServiceProvider::class
 ```
 
 And add the following entries to your .env file:
