@@ -30,8 +30,7 @@ class ApiRepository
 
     public function post($key, $parameters = [])
     {
-        $parametersList = implode('&', (array) $parameters);
-        $response = $this->client->request('POST', $key, ['form_params' => $parametersList]);
+        $response = $this->client->request('POST', $key, ['form_params' => $parameters]);
         $data = json_decode($response->getBody()->getContents())->data;
 
         if (is_null($data)) {
