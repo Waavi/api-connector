@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Cache;
 use Waavi\ApiConnector\Contracts\RemoteRepositoryContract;
 use GuzzleHttp\Client;
 
-class ApiRepository implements RemoteRepositoryContract
+class ApiRepository
 {
     protected $client;
 
@@ -18,6 +18,20 @@ class ApiRepository implements RemoteRepositoryContract
     {
         $parametersList = implode('&', (array) $parameters);
         $response = $this->client->request('GET', $key, ['query' => $parametersList]);
+        $data = json_decode($response->getBody()->getContents())->data;
+
+        if (is_null($data)) {
+            // EXPLODE
+            return 'explosion';
+        }
+
+        return $data;
+    }
+
+    public function post($key, $parameters = [])
+    {
+        $parametersList = implode('&', (array) $parameters);
+        $response = $this->client->request('POST', $key, ['form_params' => $parametersList]);
         $data = json_decode($response->getBody()->getContents())->data;
 
         if (is_null($data)) {

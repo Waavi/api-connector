@@ -20,4 +20,11 @@ class ApiConnector
         $data = $this->repository->get($key, $parameters);
         return $data;
     }
+
+    public function post($key, $parameters = [])
+    {
+        $data = $this->repository->post($key, $parameters);
+        return $data;
+    }
+
 }

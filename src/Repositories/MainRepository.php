@@ -30,4 +30,11 @@ class MainRepository
 
         return $data;
     }
+
+    public function post($key, $parameters = [])
+    {
+        $data = $this->apiRepository->post($key, $parameters);
+        return $data;
+    }
+
 }
