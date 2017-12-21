@@ -1,4 +1,5 @@
 <?php
+
 namespace Waavi\ApiConnector\Repositories;
 
 use Illuminate\Support\Facades\Cache;

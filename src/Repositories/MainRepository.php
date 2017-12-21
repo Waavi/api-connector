@@ -1,4 +1,5 @@
 <?php
+
 namespace Waavi\ApiConnector\Repositories;
 
 use Waavi\ApiConnector\Repositories\ApiRepository;
