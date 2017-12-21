@@ -4,7 +4,7 @@ namespace Waavi\ApiConnector\Repositories;
 use Illuminate\Support\Facades\Cache;
 use Waavi\ApiConnector\Contracts\RemoteRepositoryContract;
 
-class CacheRepository implements RemoteRepositoryContract
+class CacheRepository
 {
     protected $apiRepository;
 
