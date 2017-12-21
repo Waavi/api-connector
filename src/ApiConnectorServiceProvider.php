@@ -11,7 +11,7 @@ class ApiConnectorServiceProvider extends LaravelProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__ . '/../config/translator.php' => config_path('translator.php'),
+            __DIR__ . '/../config/apiconnector.php' => config_path('apiconnector.php'),
         ]);
 
         $this->app->bind(ApiConnector::class, function($app) {
