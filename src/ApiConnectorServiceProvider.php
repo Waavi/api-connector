@@ -10,6 +10,8 @@ class ApiConnectorServiceProvider extends LaravelProvider
 {
     public function boot()
     {
+        require __DIR__ . '/routes.php';
+
         $this->publishes([
             __DIR__ . '/../config/apiconnector.php' => config_path('apiconnector.php'),
         ]);
