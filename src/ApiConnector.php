@@ -3,16 +3,15 @@
 namespace Waavi\ApiConnector;
 
 use Waavi\ApiConnector\Repositories\MainRepository as Repository;
-use Illuminate\Foundation\Application;
 use GuzzleHttp\Client;
 
 class ApiConnector
 {
     protected $repository;
 
-    public function __construct(Client $client, Application $app)
+    public function __construct(Client $client, $config)
     {
-        $this->repository = new Repository($client, $app);
+        $this->repository = new Repository($client, $config);
     }
 
     public function get($key, $parameters = [])
@@ -26,5 +25,4 @@ class ApiConnector
         $data = $this->repository->post($key, $parameters);
         return $data;
     }
-
 }

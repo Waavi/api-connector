@@ -41,5 +41,4 @@ class ApiRepository
 
         return $data;
     }
-
 }

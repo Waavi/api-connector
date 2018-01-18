@@ -17,12 +17,13 @@ class ApiConnectorServiceProvider extends LaravelProvider
         ]);
 
         $this->app->bind(ApiConnector::class, function($app) {
+            $config = $app['config']['apiconnector'];
             $client = new Client([
-                'base_uri' => $app['config']->get('apiconnector.base_url'),
-                'timeout'  => $app['config']->get('apiconnector.timeout'),
-                'headers' => $app['config']->get('apiconnector.headers'),
+                'base_uri' => $config['base_url'],
+                'timeout'  => $config['timeout'],
+                'headers' => $config['headers'],
             ]);
-            return new ApiConnector($client, $app);
+            return new ApiConnector($client, $config);
         });
     }
 

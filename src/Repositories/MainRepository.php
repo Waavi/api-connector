@@ -5,7 +5,6 @@ namespace Waavi\ApiConnector\Repositories;
 use Waavi\ApiConnector\Repositories\ApiRepository;
 use Waavi\ApiConnector\Repositories\CacheRepository;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Foundation\Application;
 use GuzzleHttp\Client;
 
 class MainRepository
@@ -14,16 +13,16 @@ class MainRepository
     protected $apiRepository;
     protected $cacheRepository;
 
-    public function __construct(Client $client, Application $app)
+    public function __construct(Client $client, $config)
     {
         $this->apiRepository   = new ApiRepository($client);
         $this->cacheRepository = new CacheRepository($this->apiRepository);
-        $this->config          = $app['config'];
+        $this->config          = $config;
     }
 
     public function get($key, $parameters = [])
     {
-        if ($this->config['apiconnector']['cache']) {
+        if ($this->config['cache']) {
             $data = $this->cacheRepository->get($key, $parameters);
         } else {
             $data = $this->apiRepository->get($key, $parameters);
@@ -37,5 +36,4 @@ class MainRepository
         $data = $this->apiRepository->post($key, $parameters);
         return $data;
     }
-
 }
